@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HAPPIG & $PORK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Pixel Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(#5fa34d, #3a5a40);
+      font-family: 'Press Start 2P', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: #3a5a40;
+      border: 6px solid #1b4332;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 0 0 6px #588157;
+      max-width: 440px;
+      width: 92%;
+      position: relative;
+    }
+
+    .pig {
+      position: absolute;
+      width: 72px;
+      image-rendering: pixelated;
+      bottom: -28px;
+      left: 20px;
+      pointer-events: none;
+    }
+
+    h1 {
+      color: #ffd166;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #fefae0;
+      font-size: 9px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .info {
+      background: #2d6a4f;
+      border: 4px solid #1b4332;
+      padding: 12px;
+      font-size: 9px;
+      color: #ecf39e;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .countdown {
+      font-size: 10px;
+      color: #ffd166;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: block;
+      background: #ffd166;
+      color: #1b4332;
+      padding: 12px;
+      margin: 12px 0;
+      text-decoration: none;
+      border: 4px solid #1b4332;
+      font-size: 10px;
+      transition: 0.15s;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn.small {
+      flex: 1;
+      font-size: 9px;
+      padding: 10px;
+    }
+
+
+    .btn:hover {
+      background: #ffb703;
+      transform: translateY(-2px);
+    }
+
+    .mute {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 8px;
+      cursor: pointer;
+      color: #ecf39e;
+      border: 2px solid #1b4332;
+      padding: 6px 8px;
+      background: #2d6a4f;
+    }
+
+    .whitepaper-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 8px;
+      color: #ecf39e;
+      border: 2px solid #1b4332;
+      padding: 6px 8px;
+      background: #2d6a4f;
+      text-decoration: none;
+    }
+
+    .whitepaper-btn:hover {
+      background: #40916c;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 8px;
+      color: #d8f3dc;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="hoverSound" preload="auto" src="https://assets.mixkit.co/sfx/preview/mixkit-video-game-retro-click-237.wav"></audio>
+
+<div class="box">
+  <img src="happig_9.png" alt="HAPPIG Pig" class="pig" />
+  <div class="mute" id="muteBtn">🔊</div>
+
+  <h1>🐷 HAPPIG & $PORK</h1>
+
+  <div class="subtitle">
+    Raise your pig.<br>
+    Earn your pork.
+  </div>
+
+  <div class="info">
+    5,000 Pixel NFTs on Solana<br>
+    Mint → Buyback → Burn + Reward
+  </div>
+
+  <div class="countdown" id="countdown">
+    🚜 Farm opening soon...
+  </div>
+
+  <a class="btn" href="#">BUY $PORK (SOON)</a>
+  <a class="btn" href="https://launchmynft.io" target="_blank">MINT NFT</a>
+  <div class="row">
+    <a class="btn small" href="https://discord.gg/r7Wp4U4sjv" target="_blank">DISCORD</a>
+    <a class="btn small" href="https://x.com/HappigNFT" target="_blank">X</a>
+  </div>
+
+  <div class="footer">
+    Powered by Solana
+  </div>
+</div>
+
+<script>
+  // Countdown
+  const launchDate = new Date('2026-01-29T12:00:00').getTime();
+  const el = document.getElementById('countdown');
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = launchDate - now;
+
+    if (diff <= 0) {
+      el.innerHTML = '🚜 Farm is live!';
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+
+    el.innerHTML = `Launch in ${d}d ${h}h ${m}m`;
+  }, 1000);
+
+  // Hover sound + mute
+  const sound = document.getElementById('hoverSound');
+  const muteBtn = document.getElementById('muteBtn');
+  let muted = false;
+
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      if (!muted) {
+        sound.currentTime = 0;
+        sound.play();
+      }
+    });
+  });
+
+  muteBtn.onclick = () => {
+    muted = !muted;
+    muteBtn.innerHTML = muted ? '🔇' : '🔊';
+  };
+</script>
+
+
+</body>
+</html>
