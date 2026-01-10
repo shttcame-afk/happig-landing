@@ -139,6 +139,7 @@
 <div class="box">
   <img src="happig_9.png" alt="HAPPIG Pig" class="pig" />
   <div class="mute" id="muteBtn">🔊</div>
+  <a href="#" class="whitepaper-btn" id="wpBtn">📄 Whitepaper</a>
 
   <h1>🐷 HAPPIG & $PORK</h1>
 
@@ -152,11 +153,9 @@
     Mint → Buyback → Burn + Reward
   </div>
 
-  <div class="countdown" id="countdown">
-    🚜 Farm opening soon...
-  </div>
+  
 
-  <a class="btn" href="#">BUY $PORK (SOON)</a>
+  <a class="btn" href="https://pump.fun" target="_blank">BUY $PORK</a>
   <a class="btn" href="https://launchmynft.io" target="_blank">MINT NFT</a>
   <div class="row">
     <a class="btn small" href="https://discord.gg/r7Wp4U4sjv" target="_blank">DISCORD</a>
@@ -169,26 +168,6 @@
 </div>
 
 <script>
-  // Countdown
-  const launchDate = new Date('2026-01-29T12:00:00').getTime();
-  const el = document.getElementById('countdown');
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = launchDate - now;
-
-    if (diff <= 0) {
-      el.innerHTML = '🚜 Farm is live!';
-      return;
-    }
-
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-
-    el.innerHTML = `Launch in ${d}d ${h}h ${m}m`;
-  }, 1000);
-
   // Hover sound + mute
   const sound = document.getElementById('hoverSound');
   const muteBtn = document.getElementById('muteBtn');
@@ -209,6 +188,67 @@
   };
 </script>
 
+<!-- Whitepaper Modal -->
+<div id="whitepaper" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:999; overflow:auto;">
+  <div style="background:#3a5a40; border:6px solid #1b4332; max-width:700px; margin:40px auto; padding:24px; color:#ecf39e; font-size:9px;">
+    <h2 style="color:#ffd166;">HAPPIG & $PORK — Whitepaper</h2>
+    <h3>HAPPIG & $PORK Whitepaper</h3>
+
+<p><strong>Introduction</strong><br>
+HAPPIG is a pixel NFT collection built on Solana and connected to the $PORK ecosystem. The project aligns NFT participation with on-chain value through transparent, execution-based mechanics.</p>
+
+<p><strong>The HAPPIG NFT</strong><br>
+HAPPIG consists of 5,000 pixel-style NFTs. Each NFT represents participation in the ecosystem and eligibility for utilities connected to $PORK.</p>
+
+<p><strong>$PORK Token</strong><br>
+$PORK is the utility token that powers the HAPPIG ecosystem, enabling rewards, burns, and long-term participation. It is launched on Solana via Pump.fun.</p>
+
+<p><strong>NFT Mint Fund Allocation</strong><br>
+After platform fees, net NFT mint proceeds are allocated as follows: 70% for $PORK buybacks and 30% to a designated ecosystem wallet.</p>
+
+<p><strong>Buyback Mechanism</strong><br>
+Buybacks are executed based on predefined milestones tied to NFT mint progress and are not dependent on market price movements.</p>
+
+<p><strong>Burn Mechanism</strong><br>
+During each buyback, 20% of acquired $PORK is permanently burned by sending it to a dead address.</p>
+
+<p><strong>Reward Mechanism</strong><br>
+The remaining 80% of $PORK acquired through buybacks is allocated to rewards for eligible HAPPIG NFT holders.</p>
+
+<p><strong>Staking</strong><br>
+NFT holders may stake their NFTs for predefined periods. Longer staking periods are designed to receive higher reward weight. There are no guaranteed returns.</p>
+
+<p><strong>Wallet Transparency</strong><br>
+Multiple on-chain wallets are used, each with a single, clearly defined purpose. Funds are never mixed, and all transactions are publicly verifiable.</p>
+
+<p><strong>Creator Fees</strong><br>
+Creator fees received via Pump.fun may be used to support the ecosystem, including discretionary buyback support. Primary buyback funding remains sourced from NFT mint proceeds.</p>
+
+<p><strong>Risk Disclosure</strong><br>
+Participation involves risk. NFT and token values may fluctuate, and rewards are variable with no guaranteed profits.</p>
+
+<p><strong>Conclusion</strong><br>
+HAPPIG is an execution-driven ecosystem where NFTs fuel buybacks, buybacks drive burns and rewards, and all actions are verifiable on-chain.</p>
+
+<a href="#" id="closeWp" class="btn">CLOSE</a>
+  </div>
+</div>
+
+<script>
+  const wpBtn = document.getElementById('wpBtn');
+  const wp = document.getElementById('whitepaper');
+  const closeWp = document.getElementById('closeWp');
+
+  wpBtn.onclick = (e) => {
+    e.preventDefault();
+    wp.style.display = 'block';
+  };
+
+  closeWp.onclick = (e) => {
+    e.preventDefault();
+    wp.style.display = 'none';
+  };
+</script>
 
 </body>
 </html>
